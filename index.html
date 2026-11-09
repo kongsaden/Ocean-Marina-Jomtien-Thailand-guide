@@ -11,11 +11,13 @@
 header{background:linear-gradient(120deg,#061f3c,#0c4770);color:#fff}
 .wrap{max-width:1120px;margin:auto;padding:0 20px}
 .top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0}
-.logo{width:min(280px,58vw);height:auto;max-height:66px;object-fit:contain;object-position:left center;background:#fff;padding:7px;border-radius:8px}
+.logo{width:min(280px,58vw);height:auto;max-height:66px;object-fit:contain;object-position:left center;background:transparent;padding:0;border-radius:0}
 .lang{display:flex;gap:6px;flex-wrap:wrap}.lang button{border:1px solid #8bb2c9;background:transparent;color:#fff;border-radius:20px;padding:7px 11px;cursor:pointer}.lang button.active{background:#fff;color:var(--navy);font-weight:bold}
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center;padding:18px 0 34px}
+.hero{display:block;padding:18px 0 34px}
 .hero h1{font-size:clamp(30px,4vw,48px);line-height:1.08;margin:0 0 12px}.hero p{color:#d8e8f2;margin:0 0 18px;max-width:560px}
-.hero img{width:100%;height:240px;object-fit:cover;border-radius:14px;border:1px solid #6e9db7}
+.map-section{background:#fff;padding:24px 0;border-bottom:1px solid var(--line)}
+.map-frame{max-width:1440px;margin:0 auto;padding:0 20px}
+.map-frame img{display:block;width:100%;height:auto;object-fit:contain;border-radius:12px;border:1px solid var(--line)}
 .pill{display:inline-block;background:#164e73;color:#bff5fa;border:1px solid #3b8ca9;border-radius:30px;padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
 main{padding:28px 0 48px}.intro{display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:18px}.intro h2{margin:0;font-size:25px}.intro p{margin:4px 0 0;color:var(--muted)}
 .controls{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.search{flex:1;min-width:220px;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:16px;background:#fff}.filters{display:flex;gap:7px;flex-wrap:wrap}.filters button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:22px;padding:9px 13px;cursor:pointer}.filters button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
@@ -23,40 +25,14 @@ main{padding:28px 0 48px}.intro{display:flex;justify-content:space-between;gap:1
 .note{margin-top:20px;padding:14px 16px;background:#eaf4f8;border-left:4px solid var(--cyan);border-radius:8px;color:#36566b;font-size:13px}
 footer{background:#061f3c;color:#d4e4ee;padding:22px 0;font-size:13px}footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .empty{padding:30px;text-align:center;color:var(--muted);background:#fff;border-radius:12px;border:1px dashed var(--line)}
-@media(max-width:800px){.hero{grid-template-columns:1fr}.hero img{height:210px}.grid{grid-template-columns:repeat(2,1fr)}.intro{display:block}}
-@media(max-width:520px){.top{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:1fr}.hero{padding-top:5px}.hero img{height:180px}}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.intro{display:block}.map-frame{padding:0 12px}}
+@media(max-width:520px){.top{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:1fr}.hero{padding-top:5px}.map-section{padding:12px 0}}
 </style>
 </head>
 <body>
-<header>
- <div class="wrap">
-  <div class="top">
-   <img class="logo" src="ocean-marina-logo.png" alt="Ocean Marina Jomtien">
-   <div class="lang" aria-label="Language">
-    <button class="active" data-lang="en">EN</button><button data-lang="th">TH</button><button data-lang="zh">中文</button>
-   </div>
-  </div>
-  <section class="hero">
-   <div>
-    <span class="pill" data-i18n="eyebrow">YOUR LOCAL GUIDE</span>
-    <h1 data-i18n="title">Explore Pattaya with ease.</h1>
-    <p data-i18n="subtitle">Discover shopping, supermarkets, hospitals and local attractions near Ocean Marina Jomtien.</p>
-   </div>
-   <img src="ocean-marina-aerial.jpg" alt="Aerial view of Ocean Marina Jomtien">
-  </section>
- </div>
-</header>
-<main class="wrap">
- <div class="intro">
-  <div><h2 data-i18n="heading">Where would you like to go?</h2><p data-i18n="subheading">Choose a category or search for a place.</p></div>
- </div>
- <div class="controls">
-  <input id="search" class="search" type="search" placeholder="Search places..." aria-label="Search places">
-  <div class="filters" id="filters"></div>
- </div>
- <section id="places" class="grid" aria-live="polite"></section>
- <div class="note" data-i18n="note">Travel times and distances can change with traffic. Select “Get directions” to see the latest route from Ocean Marina Jomtien in Google Maps. Place details should be verified before publication.</div>
-</main>
+<header><div class="wrap"><div class="top"><img class="logo" src="ocean-marina-logo-white.png" alt="Ocean Marina Jomtien"><div class="lang" aria-label="Language"><button class="active" data-lang="en">EN</button><button data-lang="th">TH</button><button data-lang="zh">中文</button></div></div><section class="hero"><div><span class="pill" data-i18n="eyebrow">YOUR LOCAL GUIDE</span><h1 data-i18n="title">Explore Pattaya with ease.</h1><p data-i18n="subtitle">Discover shopping, supermarkets, hospitals and local attractions near Ocean Marina Jomtien.</p></div></section></div></header>
+<section class="map-section" aria-label="Ocean Marina Jomtien local area map"><div class="map-frame"><img src="ocean-marina-local-area-map.png" alt="Ocean Marina Jomtien local area map with nearby shopping malls, hospitals, supermarkets and attractions"></div></section>
+<main class="wrap"><div class="intro"><div><h2 data-i18n="heading">Where would you like to go?</h2><p data-i18n="subheading">Choose a category or search for a place.</p></div></div><div class="controls"><input id="search" class="search" type="search" placeholder="Search places..." aria-label="Search places"><div class="filters" id="filters"></div></div><section id="places" class="grid" aria-live="polite"></section><div class="note" data-i18n="note">Travel times and distances can change with traffic. Select “Get directions” to see the latest route from Ocean Marina Jomtien in Google Maps. Place details should be verified before publication.</div></main>
 <footer><div class="wrap"><span>© Ocean Marina Jomtien · Local Area Guide</span><span data-i18n="footer">For assistance, please contact Marina Reception.</span></div></footer>
 <script>
 const origin="Ocean Marina Jomtien, Na Jomtien, Chonburi, Thailand";
@@ -77,20 +53,12 @@ const data=[
 {id:"nongnooch",cat:"attraction",icon:"🌴",name:{en:"Nong Nooch Tropical Garden",th:"สวนนงนุช พัทยา",zh:"东芭乐园"},desc:{en:"Large tropical botanical garden and cultural attraction.",th:"สวนพฤกษศาสตร์เขตร้อนและแหล่งท่องเที่ยวเชิงวัฒนธรรม",zh:"大型热带植物园及文化景点。"},q:"Nong Nooch Tropical Garden"},
 {id:"walking-street",cat:"attraction",icon:"🌃",name:{en:"Pattaya Walking Street",th:"ถนนคนเดินพัทยา",zh:"芭堤雅步行街"},desc:{en:"Well-known evening entertainment and dining area.",th:"ย่านร้านอาหารและสถานบันเทิงยามค่ำคืน",zh:"著名的夜间娱乐及餐饮街区。"},q:"Pattaya Walking Street"}
 ];
-const text={
-en:{eyebrow:"YOUR LOCAL GUIDE",title:"Explore Pattaya with ease.",subtitle:"Discover shopping, supermarkets, hospitals and local attractions near Ocean Marina Jomtien.",heading:"Where would you like to go?",subheading:"Choose a category or search for a place.",search:"Search places...",all:"All",shopping:"Shopping malls",supermarket:"Supermarkets",hospital:"Hospitals",attraction:"Attractions",directions:"Get directions",searchMap:"View on map",note:"Travel times and distances can change with traffic. Select “Get directions” to see the latest route from Ocean Marina Jomtien in Google Maps. Place details should be verified before publication.",footer:"For assistance, please contact Marina Reception.",empty:"No places found."},
-th:{eyebrow:"คู่มือสถานที่ใกล้เคียง",title:"เที่ยวพัทยาได้ง่าย ๆ",subtitle:"ค้นหาห้างสรรพสินค้า ซูเปอร์มาร์เก็ต โรงพยาบาล และสถานที่ท่องเที่ยวใกล้ Ocean Marina Jomtien",heading:"คุณต้องการไปที่ไหน?",subheading:"เลือกหมวดหมู่หรือค้นหาสถานที่",search:"ค้นหาสถานที่...",all:"ทั้งหมด",shopping:"ห้างสรรพสินค้า",supermarket:"ซูเปอร์มาร์เก็ต",hospital:"โรงพยาบาล",attraction:"สถานที่ท่องเที่ยว",directions:"นำทาง",searchMap:"ดูบนแผนที่",note:"ระยะทางและเวลาเดินทางอาจเปลี่ยนแปลงตามสภาพจราจร กด “นำทาง” เพื่อดูเส้นทางล่าสุดจาก Ocean Marina Jomtien ใน Google Maps โปรดตรวจสอบข้อมูลสถานที่ก่อนเผยแพร่",footer:"หากต้องการความช่วยเหลือ โปรดติดต่อ Marina Reception",empty:"ไม่พบสถานที่"},
-zh:{eyebrow:"附近地点指南",title:"轻松探索芭堤雅",subtitle:"查找 Ocean Marina Jomtien 附近的购物中心、超市、医院和旅游景点。",heading:"您想去哪里？",subheading:"选择类别或搜索地点。",search:"搜索地点...",all:"全部",shopping:"购物中心",supermarket:"超市",hospital:"医院",attraction:"旅游景点",directions:"路线导航",searchMap:"地图查看",note:"距离和行车时间会因交通状况而变化。点击“路线导航”即可在 Google 地图中查看从 Ocean Marina Jomtien 出发的最新路线。发布前请核实地点信息。",footer:"如需协助，请联系 Marina Reception。",empty:"未找到地点。"}
-};
-let lang="en",category="all";
-const $=s=>document.querySelector(s);
-function renderFilters(){const t=text[lang];const cats=["all","shopping","supermarket","hospital","attraction"];$("#filters").innerHTML=cats.map(c=>`<button class="${category===c?"active":""}" data-cat="${c}">${t[c]}</button>`).join("");}
-function render(){const t=text[lang],query=$("#search").value.trim().toLowerCase();const list=data.filter(p=>(category==="all"||p.cat===category)&&[p.name.en,p.name.th,p.name.zh,p.q].join(" ").toLowerCase().includes(query));$("#places").innerHTML=list.length?list.map(p=>{const dest=encodeURIComponent(p.q);const from=encodeURIComponent(origin);const dir=`https://www.google.com/maps/dir/?api=1&origin=${from}&destination=${dest}&travelmode=driving`;const map=`https://www.google.com/maps/search/?api=1&query=${dest}`;return `<article class="card"><div class="cardtop"><div class="ico">${p.icon}</div><div class="category">${t[p.cat]}</div></div><h3>${p.name[lang]}</h3><p class="desc">${p.desc[lang]}</p><div class="actions"><a class="btn primary" href="${dir}" target="_blank" rel="noopener">${t.directions} ↗</a><a class="btn secondary" href="${map}" target="_blank" rel="noopener">${t.searchMap}</a></div></article>`}).join(""):`<div class="empty">${t.empty}</div>`;}
+const text={en:{eyebrow:"YOUR LOCAL GUIDE",title:"Explore Pattaya with ease.",subtitle:"Discover shopping, supermarkets, hospitals and local attractions near Ocean Marina Jomtien.",heading:"Where would you like to go?",subheading:"Choose a category or search for a place.",search:"Search places...",all:"All",shopping:"Shopping malls",supermarket:"Supermarkets",hospital:"Hospitals",attraction:"Attractions",directions:"Get directions",searchMap:"View on map",note:"Travel times and distances can change with traffic. Select “Get directions” to see the latest route from Ocean Marina Jomtien in Google Maps. Place details should be verified before publication.",footer:"For assistance, please contact Marina Reception.",empty:"No places found."},th:{eyebrow:"คู่มือสถานที่ใกล้เคียง",title:"เที่ยวพัทยาได้ง่าย ๆ",subtitle:"ค้นหาห้างสรรพสินค้า ซูเปอร์มาร์เก็ต โรงพยาบาล และสถานที่ท่องเที่ยวใกล้ Ocean Marina Jomtien",heading:"คุณต้องการไปที่ไหน?",subheading:"เลือกหมวดหมู่หรือค้นหาสถานที่",search:"ค้นหาสถานที่...",all:"ทั้งหมด",shopping:"ห้างสรรพสินค้า",supermarket:"ซูเปอร์มาร์เก็ต",hospital:"โรงพยาบาล",attraction:"สถานที่ท่องเที่ยว",directions:"นำทาง",searchMap:"ดูบนแผนที่",note:"ระยะทางและเวลาเดินทางอาจเปลี่ยนแปลงตามสภาพจราจร กด “นำทาง” เพื่อดูเส้นทางล่าสุดจาก Ocean Marina Jomtien ใน Google Maps โปรดตรวจสอบข้อมูลสถานที่ก่อนเผยแพร่",footer:"หากต้องการความช่วยเหลือ โปรดติดต่อ Marina Reception",empty:"ไม่พบสถานที่"},zh:{eyebrow:"附近地点指南",title:"轻松探索芭堤雅",subtitle:"查找 Ocean Marina Jomtien 附近的购物中心、超市、医院和旅游景点。",heading:"您想去哪里？",subheading:"选择类别或搜索地点。",search:"搜索地点...",all:"全部",shopping:"购物中心",supermarket:"超市",hospital:"医院",attraction:"旅游景点",directions:"路线导航",searchMap:"地图查看",note:"距离和行车时间会因交通状况而变化。点击“路线导航”即可在 Google 地图中查看从 Ocean Marina Jomtien 出发的最新路线。发布前请核实地点信息。",footer:"如需协助，请联系 Marina Reception。",empty:"未找到地点。"}};
+let lang="en",category="all";const $=s=>document.querySelector(s);
+function renderFilters(){const t=text[lang],cats=["all","shopping","supermarket","hospital","attraction"];$("#filters").innerHTML=cats.map(c=>`<button class="${category===c?"active":""}" data-cat="${c}">${t[c]}</button>`).join("");}
+function render(){const t=text[lang],query=$("#search").value.trim().toLowerCase();const list=data.filter(p=>(category==="all"||p.cat===category)&&[p.name.en,p.name.th,p.name.zh,p.q].join(" ").toLowerCase().includes(query));$("#places").innerHTML=list.length?list.map(p=>{const dest=encodeURIComponent(p.q),from=encodeURIComponent(origin),dir=`https://www.google.com/maps/dir/?api=1&origin=${from}&destination=${dest}&travelmode=driving`,map=`https://www.google.com/maps/search/?api=1&query=${dest}`;return `<article class="card"><div class="cardtop"><div class="ico">${p.icon}</div><div class="category">${t[p.cat]}</div></div><h3>${p.name[lang]}</h3><p class="desc">${p.desc[lang]}</p><div class="actions"><a class="btn primary" href="${dir}" target="_blank" rel="noopener">${t.directions} ↗</a><a class="btn secondary" href="${map}" target="_blank" rel="noopener">${t.searchMap}</a></div></article>`}).join(""):`<div class="empty">${t.empty}</div>`;}
 function setLang(l){lang=l;document.documentElement.lang=l;document.querySelectorAll("[data-lang]").forEach(b=>b.classList.toggle("active",b.dataset.lang===l));document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;el.textContent=text[l][k]});$("#search").placeholder=text[l].search;renderFilters();render();}
-document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
-$("#filters").addEventListener("click",e=>{const b=e.target.closest("[data-cat]");if(!b)return;category=b.dataset.cat;renderFilters();render();});
-$("#search").addEventListener("input",render);
-setLang("en");
+document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));$("#filters").addEventListener("click",e=>{const b=e.target.closest("[data-cat]");if(!b)return;category=b.dataset.cat;renderFilters();render();});$("#search").addEventListener("input",render);setLang("en");
 </script>
 </body>
 </html>
