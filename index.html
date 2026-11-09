@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#082b50">
+<title>Ocean Marina Jomtien | Local Guide</title>
+<style>
+:root{--navy:#082b50;--blue:#105b86;--cyan:#40c5d8;--ink:#16324a;--muted:#607487;--bg:#f3f7fa;--card:#fff;--line:#dce6ed}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Arial,Helvetica,sans-serif}
+header{background:linear-gradient(120deg,#061f3c,#0c4770);color:#fff}
+.wrap{max-width:1120px;margin:auto;padding:0 20px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0}
+.logo{width:min(280px,58vw);height:auto;max-height:66px;object-fit:contain;object-position:left center;background:#fff;padding:7px;border-radius:8px}
+.lang{display:flex;gap:6px;flex-wrap:wrap}.lang button{border:1px solid #8bb2c9;background:transparent;color:#fff;border-radius:20px;padding:7px 11px;cursor:pointer}.lang button.active{background:#fff;color:var(--navy);font-weight:bold}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center;padding:18px 0 34px}
+.hero h1{font-size:clamp(30px,4vw,48px);line-height:1.08;margin:0 0 12px}.hero p{color:#d8e8f2;margin:0 0 18px;max-width:560px}
+.hero img{width:100%;height:240px;object-fit:cover;border-radius:14px;border:1px solid #6e9db7}
+.pill{display:inline-block;background:#164e73;color:#bff5fa;border:1px solid #3b8ca9;border-radius:30px;padding:5px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+main{padding:28px 0 48px}.intro{display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:18px}.intro h2{margin:0;font-size:25px}.intro p{margin:4px 0 0;color:var(--muted)}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.search{flex:1;min-width:220px;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:16px;background:#fff}.filters{display:flex;gap:7px;flex-wrap:wrap}.filters button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:22px;padding:9px 13px;cursor:pointer}.filters button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:17px;box-shadow:0 3px 12px #0b35500a;display:flex;flex-direction:column;min-height:205px}.cardtop{display:flex;align-items:center;gap:10px}.ico{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:#e9f6f9;font-size:22px}.category{font-size:11px;color:#18718c;text-transform:uppercase;font-weight:bold;letter-spacing:.07em}.card h3{font-size:18px;line-height:1.25;margin:11px 0 5px}.desc{color:var(--muted);font-size:14px;margin:0 0 14px}.actions{display:flex;gap:8px;margin-top:auto;flex-wrap:wrap}.btn{display:inline-block;text-decoration:none;border-radius:8px;padding:9px 12px;font-weight:bold;font-size:13px}.primary{background:var(--navy);color:white}.secondary{border:1px solid var(--line);color:var(--navy);background:white}
+.note{margin-top:20px;padding:14px 16px;background:#eaf4f8;border-left:4px solid var(--cyan);border-radius:8px;color:#36566b;font-size:13px}
+footer{background:#061f3c;color:#d4e4ee;padding:22px 0;font-size:13px}footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.empty{padding:30px;text-align:center;color:var(--muted);background:#fff;border-radius:12px;border:1px dashed var(--line)}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.hero img{height:210px}.grid{grid-template-columns:repeat(2,1fr)}.intro{display:block}}
+@media(max-width:520px){.top{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:1fr}.hero{padding-top:5px}.hero img{height:180px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap">
+  <div class="top">
+   <img class="logo" src="assets/ocean-marina-logo.png" alt="Ocean Marina Jomtien">
+   <div class="lang" aria-label="Language">
+    <button class="active" data-lang="en">EN</button><button data-lang="th">TH</button><button data-lang="zh">中文</button>
+   </div>
+  </div>
+  <section class="hero">
+   <div>
+    <span class="pill" data-i18n="eyebrow">YOUR LOCAL GUIDE</span>
+    <h1 data-i18n="title">Explore Pattaya with ease.</h1>
+    <p data-i18n="subtitle">Discover shopping, supermarkets, hospitals and local attractions near Ocean Marina Jomtien.</p>
+   </div>
+   <img src="assets/ocean-marina-aerial.jpg" alt="Aerial view of Ocean Marina Jomtien">
+  </section>
+ </div>
+</header>
+<main class="wrap">
+ <div class="intro">
+  <div><h2 data-i18n="heading">Where would you like to go?</h2><p data-i18n="subheading">Choose a category or search for a place.</p></div>
+ </div>
+ <div class="controls">
+  <input id="search" class="search" type="search" placeholder="Search places..." aria-label="Search places">
+  <div class="filters" id="filters"></div>
+ </div>
+ <section id="places" class="grid" aria-live="polite"></section>
+ <div class="note" data-i18n="note">Travel times and distances can change with traffic. Select “Get directions” to see the latest route from Ocean Marina Jomtien in Google Maps. Place details should be verified before publication.</div>
+</main>
+<footer><div class="wrap"><span>© Ocean Marina Jomtien · Local Area Guide</span><span data-i18n="footer">For assistance, please contact Marina Reception.</span></div></footer>
+<script>
+const origin="Ocean Marina Jomtien, Na Jomtien, Chonburi, Thailand";
+const data=[
+{id:"central-pattaya",cat:"shopping",icon:"🛍️",name:{en:"Central Pattaya",th:"เซ็นทรัล พัทยา",zh:"Central Pattaya 购物中心"},desc:{en:"Shopping, dining and entertainment in central Pattaya.",th:"ศูนย์การค้า ร้านอาหาร และความบันเทิงใจกลางพัทยา",zh:"位于芭堤雅市中心的购物、餐饮及娱乐中心。"},q:"Central Pattaya shopping mall"},
+{id:"terminal21",cat:"shopping",icon:"🛍️",name:{en:"Terminal 21 Pattaya",th:"เทอร์มินอล 21 พัทยา",zh:"Terminal 21 Pattaya"},desc:{en:"Large shopping mall in North Pattaya.",th:"ศูนย์การค้าขนาดใหญ่ในพัทยาเหนือ",zh:"芭堤雅北部大型购物中心。"},q:"Terminal 21 Pattaya"},
+{id:"central-marina",cat:"shopping",icon:"🛍️",name:{en:"Central Marina",th:"เซ็นทรัล มารีนา",zh:"Central Marina"},desc:{en:"Shopping and dining near North Pattaya.",th:"แหล่งช้อปปิ้งและร้านอาหารย่านพัทยาเหนือ",zh:"芭堤雅北部的购物及餐饮场所。"},q:"Central Marina Pattaya"},
+{id:"bigc-south",cat:"supermarket",icon:"🛒",name:{en:"Big C South Pattaya",th:"บิ๊กซี พัทยาใต้",zh:"Big C South Pattaya"},desc:{en:"Supermarket and general shopping.",th:"ซูเปอร์มาร์เก็ตและสินค้าอุปโภคบริโภค",zh:"超市及日常用品购物。"},q:"Big C Supercenter South Pattaya"},
+{id:"bigc-klang",cat:"supermarket",icon:"🛒",name:{en:"Big C Extra Pattaya Klang",th:"บิ๊กซี เอ็กซ์ตร้า พัทยากลาง",zh:"Big C Extra Pattaya Klang"},desc:{en:"Hypermarket on Central Pattaya Road.",th:"ไฮเปอร์มาร์เก็ตบนถนนพัทยากลาง",zh:"位于芭堤雅中路的大型超市。"},q:"Big C Extra Pattaya Klang"},
+{id:"lotus-south",cat:"supermarket",icon:"🛒",name:{en:"Lotus's South Pattaya",th:"โลตัส พัทยาใต้",zh:"Lotus's South Pattaya"},desc:{en:"Supermarket and everyday essentials.",th:"ซูเปอร์มาร์เก็ตและสินค้าใช้ประจำวัน",zh:"超市及日常生活用品。"},q:"Lotus's South Pattaya"},
+{id:"makro",cat:"supermarket",icon:"🛒",name:{en:"Makro South Pattaya",th:"แม็คโคร พัทยาใต้",zh:"Makro South Pattaya"},desc:{en:"Wholesale shopping for groceries and supplies.",th:"แหล่งซื้อสินค้าอุปโภคบริโภคและสินค้าราคาส่ง",zh:"食品及日用品批发购物。"},q:"Makro South Pattaya"},
+{id:"foodland",cat:"supermarket",icon:"🛒",name:{en:"Foodland Pattaya",th:"ฟู้ดแลนด์ พัทยา",zh:"Foodland Pattaya"},desc:{en:"Supermarket and grocery shopping.",th:"ซูเปอร์มาร์เก็ตและร้านจำหน่ายสินค้าอาหาร",zh:"超市及食品杂货购物。"},q:"Foodland Pattaya Klang"},
+{id:"jomtien-hospital",cat:"hospital",icon:"🏥",name:{en:"Jomtien Hospital",th:"โรงพยาบาลจอมเทียน",zh:"中天医院"},desc:{en:"Hospital in the Jomtien area. For emergencies, call Thailand emergency medical services at 1669.",th:"โรงพยาบาลในพื้นที่จอมเทียน กรณีฉุกเฉินทางการแพทย์ โทร 1669",zh:"位于中天地区的医院。医疗紧急情况请拨打泰国急救电话 1669。"},q:"Jomtien Hospital Pattaya"},
+{id:"bangkok-hospital",cat:"hospital",icon:"🏥",name:{en:"Bangkok Hospital Pattaya",th:"โรงพยาบาลกรุงเทพพัทยา",zh:"曼谷医院芭堤雅分院"},desc:{en:"Private hospital in Pattaya. Emergency medical services: 1669.",th:"โรงพยาบาลเอกชนในพัทยา กรณีฉุกเฉินโทร 1669",zh:"芭堤雅私立医院。医疗紧急情况请拨打 1669。"},q:"Bangkok Hospital Pattaya"},
+{id:"memorial",cat:"hospital",icon:"🏥",name:{en:"Pattaya Memorial Hospital",th:"โรงพยาบาลพัทยาเมโมเรียล",zh:"芭堤雅纪念医院"},desc:{en:"Hospital in central Pattaya.",th:"โรงพยาบาลในย่านพัทยากลาง",zh:"位于芭堤雅市中心的医院。"},q:"Pattaya Memorial Hospital"},
+{id:"jomtien-beach",cat:"attraction",icon:"🏖️",name:{en:"Jomtien Beach",th:"หาดจอมเทียน",zh:"中天海滩"},desc:{en:"Popular beach for relaxing, dining and water activities.",th:"ชายหาดยอดนิยมสำหรับพักผ่อน รับประทานอาหาร และกิจกรรมทางน้ำ",zh:"适合休闲、用餐及水上活动的热门海滩。"},q:"Jomtien Beach Pattaya"},
+{id:"floating-market",cat:"attraction",icon:"🎏",name:{en:"Pattaya Floating Market",th:"ตลาดน้ำ 4 ภาค พัทยา",zh:"芭堤雅四方水上市场"},desc:{en:"Cultural market with Thai food, crafts and local products.",th:"ตลาดวัฒนธรรม อาหารไทย งานหัตถกรรม และสินค้าท้องถิ่น",zh:"展示泰国美食、手工艺及当地商品的文化市场。"},q:"Pattaya Floating Market"},
+{id:"nongnooch",cat:"attraction",icon:"🌴",name:{en:"Nong Nooch Tropical Garden",th:"สวนนงนุช พัทยา",zh:"东芭乐园"},desc:{en:"Large tropical botanical garden and cultural attraction.",th:"สวนพฤกษศาสตร์เขตร้อนและแหล่งท่องเที่ยวเชิงวัฒนธรรม",zh:"大型热带植物园及文化景点。"},q:"Nong Nooch Tropical Garden"},
+{id:"walking-street",cat:"attraction",icon:"🌃",name:{en:"Pattaya Walking Street",th:"ถนนคนเดินพัทยา",zh:"芭堤雅步行街"},desc:{en:"Well-known evening entertainment and dining area.",th:"ย่านร้านอาหารและสถานบันเทิงยามค่ำคืน",zh:"著名的夜间娱乐及餐饮街区。"},q:"Pattaya Walking Street"}
+];
+const text={
+en:{eyebrow:"YOUR LOCAL GUIDE",title:"Explore Pattaya with ease.",subtitle:"Discover shopping, supermarkets, hospitals and local attractions near Ocean Marina Jomtien.",heading:"Where would you like to go?",subheading:"Choose a category or search for a place.",search:"Search places...",all:"All",shopping:"Shopping malls",supermarket:"Supermarkets",hospital:"Hospitals",attraction:"Attractions",directions:"Get directions",searchMap:"View on map",note:"Travel times and distances can change with traffic. Select “Get directions” to see the latest route from Ocean Marina Jomtien in Google Maps. Place details should be verified before publication.",footer:"For assistance, please contact Marina Reception.",empty:"No places found."},
+th:{eyebrow:"คู่มือสถานที่ใกล้เคียง",title:"เที่ยวพัทยาได้ง่าย ๆ",subtitle:"ค้นหาห้างสรรพสินค้า ซูเปอร์มาร์เก็ต โรงพยาบาล และสถานที่ท่องเที่ยวใกล้ Ocean Marina Jomtien",heading:"คุณต้องการไปที่ไหน?",subheading:"เลือกหมวดหมู่หรือค้นหาสถานที่",search:"ค้นหาสถานที่...",all:"ทั้งหมด",shopping:"ห้างสรรพสินค้า",supermarket:"ซูเปอร์มาร์เก็ต",hospital:"โรงพยาบาล",attraction:"สถานที่ท่องเที่ยว",directions:"นำทาง",searchMap:"ดูบนแผนที่",note:"ระยะทางและเวลาเดินทางอาจเปลี่ยนแปลงตามสภาพจราจร กด “นำทาง” เพื่อดูเส้นทางล่าสุดจาก Ocean Marina Jomtien ใน Google Maps โปรดตรวจสอบข้อมูลสถานที่ก่อนเผยแพร่",footer:"หากต้องการความช่วยเหลือ โปรดติดต่อ Marina Reception",empty:"ไม่พบสถานที่"},
+zh:{eyebrow:"附近地点指南",title:"轻松探索芭堤雅",subtitle:"查找 Ocean Marina Jomtien 附近的购物中心、超市、医院和旅游景点。",heading:"您想去哪里？",subheading:"选择类别或搜索地点。",search:"搜索地点...",all:"全部",shopping:"购物中心",supermarket:"超市",hospital:"医院",attraction:"旅游景点",directions:"路线导航",searchMap:"地图查看",note:"距离和行车时间会因交通状况而变化。点击“路线导航”即可在 Google 地图中查看从 Ocean Marina Jomtien 出发的最新路线。发布前请核实地点信息。",footer:"如需协助，请联系 Marina Reception。",empty:"未找到地点。"}
+};
+let lang="en",category="all";
+const $=s=>document.querySelector(s);
+function renderFilters(){const t=text[lang];const cats=["all","shopping","supermarket","hospital","attraction"];$("#filters").innerHTML=cats.map(c=>`<button class="${category===c?"active":""}" data-cat="${c}">${t[c]}</button>`).join("");}
+function render(){const t=text[lang],query=$("#search").value.trim().toLowerCase();const list=data.filter(p=>(category==="all"||p.cat===category)&&[p.name.en,p.name.th,p.name.zh,p.q].join(" ").toLowerCase().includes(query));$("#places").innerHTML=list.length?list.map(p=>{const dest=encodeURIComponent(p.q);const from=encodeURIComponent(origin);const dir=`https://www.google.com/maps/dir/?api=1&origin=${from}&destination=${dest}&travelmode=driving`;const map=`https://www.google.com/maps/search/?api=1&query=${dest}`;return `<article class="card"><div class="cardtop"><div class="ico">${p.icon}</div><div class="category">${t[p.cat]}</div></div><h3>${p.name[lang]}</h3><p class="desc">${p.desc[lang]}</p><div class="actions"><a class="btn primary" href="${dir}" target="_blank" rel="noopener">${t.directions} ↗</a><a class="btn secondary" href="${map}" target="_blank" rel="noopener">${t.searchMap}</a></div></article>`}).join(""):`<div class="empty">${t.empty}</div>`;}
+function setLang(l){lang=l;document.documentElement.lang=l;document.querySelectorAll("[data-lang]").forEach(b=>b.classList.toggle("active",b.dataset.lang===l));document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;el.textContent=text[l][k]});$("#search").placeholder=text[l].search;renderFilters();render();}
+document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+$("#filters").addEventListener("click",e=>{const b=e.target.closest("[data-cat]");if(!b)return;category=b.dataset.cat;renderFilters();render();});
+$("#search").addEventListener("input",render);
+setLang("en");
+</script>
+</body>
+</html>
