@@ -1,0 +1,7 @@
+{
+  "name": "ocean-marina-visitor-assistance",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WhatsApp AI visitor assistance webhook for Ocean Marina Jomtien",
+  "engines": { "node": ">=20" }
+}
